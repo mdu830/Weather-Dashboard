@@ -1,0 +1,26 @@
+
+body {
+    background-image: url(../images/bodybackground.jpg);
+    background-size: auto;
+}
+nav {
+    background-image: url(../images/navbackground.png);
+    opacity: 95%;
+    background-size: 100px;
+    background-repeat: repeat-x;
+    background-position: center;
+
+}
+
+.h1 {
+    text-align: center;
+    font-family: 'Days One', sans-serif;
+    font-size: 35px;
+    color: rgba(255, 255, 255, 0.911);
+    text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5); 
+}
