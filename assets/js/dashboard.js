@@ -87,12 +87,13 @@ $(document).ready(function(){
             month = (date.getMonth() < 9 ? '0' : '') + (date.getMonth() + 1);
             year = date.getFullYear();
 
-            var finalDate = "(" + day + '/' + month + '/' + year + ")";
+            var finalDate = "(" + month + '/' + day + '/' + year + ")";
 
             //Weather info//
             //temperature
             var temp = dayResponse.main.temp;
-            displayTemp = "Temprature: " + temp;
+            newTemp = Math.round(temp);
+            displayTemp = "Temprature: " + newTemp;
             // console.log(displayTemp);
             //humidity
             var humidity = dayResponse.main.humidity;
@@ -109,6 +110,13 @@ $(document).ready(function(){
             
 
             //create container with current day forcast info
+            
+            //Today Row
+            row = $("<div>");
+            row.attr("class", "row mt-1 ml-3 mb-2");
+            $("#displayInfo").append(row);
+            todayTitle = $("<h1>").text("Today: ");
+            row.append(todayTitle);
 
             //row
             row = $("<div>");
@@ -116,7 +124,7 @@ $(document).ready(function(){
             $("#displayInfo").append(row);
             //container
             card = $("<div>");
-            card.attr("class", "card m-4 text-center p-4");
+            card.attr("class", "card m-4 mt-n1 mb-1 text-center p-4");
             card.attr("id", "currentWeather")
             row.append(card);
 
@@ -179,8 +187,67 @@ $(document).ready(function(){
 
           build5DayQuery(response);
 
+          //5-day forecast title row
+          row = $("<div>");
+          row.attr("class", "row ml-3 mt-1 mb-2");
+          $("#displayInfo").append(row);
+          fiveDayTitle = $("<h1>").text("5-Day Forecast:");
+          row.append(fiveDayTitle);
+          //forecast card(s) row
+          row = $("<div>");
+          row.attr("class", "row");
+          $("#displayInfo").append(row);
+
+
           for (var i = 0; i < response.list.length; i++) {
-            
+
+            if (response.list[i].dt_txt.indexOf("15:00:00") !== -1){
+
+              //append dates
+              card = $("<div>");
+              card.attr("class", "card m-4 mt-n1 mr-n1 text-center p-4 fiveDayForecast");
+              row.append(card);
+
+              var unixTS = response.list[i].dt;
+              var date = new Date(unixTS * 1000);
+              day = (date.getDate() < 10 ? '0' : '') + date.getDate();
+              month = (date.getMonth() < 9 ? '0' : '') + (date.getMonth() + 1);
+              year = date.getFullYear()
+
+              var finalDate = month + '/' + day + '/' + year;
+
+              dateTitle = $("<h3>").text(finalDate);
+              card.append(dateTitle);
+
+              //append icons
+              var iconCode = response.list[i].weather[0].icon;
+              var iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+              
+              iconCol =$("<div>");
+              iconCol.attr("class", "col");
+              card.append(iconCol);
+
+              var iconIMG = $("<img>");
+              iconIMG.attr("id", "fiveDayWeatherIcon");
+              iconIMG.attr("src", iconURL);
+              iconCol.append(iconIMG);
+
+              //append tempratures
+              APItemp = response.list[i].main.temp;
+               newTemp =Math.round(APItemp);
+              var displayTemps ="Temp: " + newTemp;
+              var tempratureH2 = $("<h4>").text(displayTemps);
+              tempratureH2.attr("class", "mb-n1")
+              card.append(tempratureH2);
+              tempratureH2.unbind().append(' &deg;' + "F");
+
+              //append humidity values
+              var humidityPercents = "Humidity: " + response.list[i].main.humidity + " %";
+              var humidityH2 = $("<h4>").text(humidityPercents);
+              humidityH2.attr("class", "mt-4")
+              card.append(humidityH2);
+
+            }
           }
 
           console.log(fiveDayQueryURL);

@@ -1,6 +1,7 @@
 
 body {
     background-color: darkcyan;
+    background-attachment: fixed;
     background-image: url(../images/bodybackground.jpg);
     background-size: auto;
 }
@@ -27,17 +28,79 @@ nav {
 }
 
 .colColor {
+    min-width: 160px;
     background-color: rgba(20, 18, 18, 0.842);
+    box-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5); 
 }
 
 .colColor2 {
     background-color: rgba(20, 18, 18, 0.534);
 }
 
-h3 {
-    font-size: medium;
+h1 {
+    font-size: 30px;
     font-family: 'Days One';
-    color: white;
+    font-weight: bolder;
+    color: rgb(245, 245, 245);
+    padding: 7px;
+    text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5);
+
+}
+
+h2 {
+    margin: 10px;
+    color: rgb(245, 245, 245);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    text-align: left;
+    padding-top: 7px;
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Days One', sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.911);
+    text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5);
+}
+
+h4 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bolder;
+    color: rgba(255, 255, 255, 0.911);
+    text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5);
+}
+
+h5 {
+    margin: 16px;
+    color: rgb(245, 245, 245);
+    font-family: 'Days One';
+    font-size: 16px;
+    font-weight: bolder;
+    text-align: left;
+    padding-top: 7px;
 }
 
 p {
@@ -79,6 +142,12 @@ p {
 
 }
 
+#fiveDayWeatherIcon {
+    width: 76px;
+    height: auto;
+
+}
+
 .card {
     background-color: rgba(41, 41, 41, 0.692);
     border-radius: 20px;
@@ -90,33 +159,11 @@ p {
     20px 40px 40px rgba(0,0,0,.5);
 }
 
-
-h1 {
-    font-size: 30px;
-    font-family: 'Days One';
-    font-weight: bolder;
-    color: rgb(245, 245, 245);
-    padding: 7px;
-    text-shadow:
-    -1px -1px 0 rgba(255, 255, 255, 0),
-    1px 1px 0 rgba(0,0,0,.25),
-    3px 3px 3px rgba(0,0,0,.25),
-    10px 10px 20px rgba(0,0,0,.5),
-    20px 40px 40px rgba(0,0,0,.5);
-
-}
-
-h2 {
-    margin: 10px;
-    color: rgb(245, 245, 245);
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    text-align: left;
-    padding-top: 7px;
+.fiveDayForecast {
+    width: 160px;
 }
 
 .uvContainer {
-    /* background-color: blue; */
     width: 70px;
     border-radius: 4px;
     padding-top: 13px;
@@ -143,4 +190,7 @@ footer {
     #currentWeather {
         width: 560px;
     }
+
 }
+
+
