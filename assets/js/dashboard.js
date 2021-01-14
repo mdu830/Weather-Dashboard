@@ -3,6 +3,8 @@ $(document).ready(function(){
 
     var APIkey = "2b7b2e286449b71196ecbc04235f228d";
 
+    var cityName = $("#cityNameInput");
+
     console.log("yo yo");
 
     //get stored city searched from local storage JSON(parse)
@@ -17,7 +19,7 @@ $(document).ready(function(){
     function buildCurrentQuery() {
         cityName = $("#cityNameInput").val().trim();
 
-        queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIkey;
+        queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIkey;
 
         
 
@@ -27,15 +29,33 @@ $(document).ready(function(){
     function build5DayQuery() {
         cityName = $("#cityNameInput").val().trim();
 
-        fiveDayQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + APIkey;
+        fiveDayQueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + APIkey;
 
     }
 
     //build uvIndex info
     function buildUVQuery() {
 
-        UVqueryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
+        UVqueryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
     }
+
+
+    function saveCitySearch() {
+
+      var citySaved = JSON.parse(localStorage.getItem(cityName));
+      if(citySaved === null){
+
+
+
+      } else if (cityName.indexOf(citySaved) === -1) {
+
+        citySaved = [cityName];
+        cityName.push(citySaved);
+
+      } localStorage.setItem(cityName, JSON.stringify(citySaved));
+    }
+
+
 
     $('#search').on("click", function(event) {
 
@@ -44,9 +64,11 @@ $(document).ready(function(){
         //remove starting message 
         $("#displayInfo").empty();
 
-
         //get current day forcast
         buildCurrentQuery()
+
+        //save current city search
+        saveCitySearch()
 
         $.ajax({
             url: queryURL,
@@ -250,12 +272,10 @@ $(document).ready(function(){
             }
           }
 
-          console.log(fiveDayQueryURL);
-          console.log(response);
-
           //get uvIndex coords
           lat = response.city.coord.lat;
           lon = response.city.coord.lon;
+
           buildUVQuery()
 
           $.ajax({
