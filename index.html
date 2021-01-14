@@ -19,12 +19,35 @@
         <script src="assets/js/jquery-3.5.1.min.js"></script>
     </head>
     <body>
-                <!-- Title bar -->
-                <nav class="navbar">
-                    <div class="container-fluid justify-content-center">
-                      <span id="title" class="navbar m-n1 mb-0 h1">Weather Dashboard</span>
-                    </div>
-                </nav>
+            <!-- Title bar -->
+        <nav class="navbar">
+            <div class="container-fluid justify-content-center">
+                <span id="title" class="navbar m-n1 mb-0 h1">Weather Dashboard</span>
+            </div>
+        </nav>
+        <!-- Search sidebar -->
+        <div class="container-fluid">
+            <div class="row min-vh-100">
+                <aside class="col-sm-3 colColor">
+                    <h3 class="mt-5 mb-3">Search for your City:</h3>
+                    <form class="form-inline">
+                        <input id="cityNameInput" class="form-control mt-sm-2 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button id="search" class="btn btn-outline-success mt-sm-2 my-2 my-sm-0" type="submit">Search</button>
+                    </form>
 
+                </aside>
+                <article id="displayInfo" class="col colColor2">
+
+                </article>
+            </div>
+        </div>
+
+            <!-- sticky footer -->
+        <footer class="navbar bg-dark fixed-bottom ">
+            <div class="container d-flex justify-content-center">
+                <span class="text-muted"> &#169; Mitchell Duncan 2020</span>
+                </div>
+        </footer>
+        <script src="./assets/js/dashboard.js"></script>
     </body>
 </html>

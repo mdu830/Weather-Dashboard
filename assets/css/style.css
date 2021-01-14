@@ -1,11 +1,12 @@
 
 body {
+    background-color: darkcyan;
     background-image: url(../images/bodybackground.jpg);
     background-size: auto;
 }
 nav {
     background-image: url(../images/navbackground.png);
-    opacity: 95%;
+    opacity: 99%;
     background-size: 100px;
     background-repeat: repeat-x;
     background-position: center;
@@ -23,4 +24,123 @@ nav {
     3px 3px 3px rgba(0,0,0,.25),
     10px 10px 20px rgba(0,0,0,.5),
     20px 40px 40px rgba(0,0,0,.5); 
+}
+
+.colColor {
+    background-color: rgba(20, 18, 18, 0.842);
+}
+
+.colColor2 {
+    background-color: rgba(20, 18, 18, 0.534);
+}
+
+h3 {
+    font-size: medium;
+    font-family: 'Days One';
+    color: white;
+}
+
+p {
+    font-size: 20px;
+    font-family: 'Days One';
+    color: white;
+    text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5);
+    margin: auto;
+    padding: 225px 0px
+}
+
+.btn {
+    flex: right;
+}
+
+#startMessage {
+    text-align: center;
+
+}
+
+#errorMessage {
+    text-align: center;
+
+}
+
+#nothingMessage {
+    text-align: center;
+
+}
+
+#weatherIcon {
+    width: 120px;
+    height: auto;
+
+}
+
+.card {
+    background-color: rgba(41, 41, 41, 0.692);
+    border-radius: 20px;
+    box-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5);
+}
+
+
+h1 {
+    font-size: 30px;
+    font-family: 'Days One';
+    font-weight: bolder;
+    color: rgb(245, 245, 245);
+    padding: 7px;
+    text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5);
+
+}
+
+h2 {
+    margin: 10px;
+    color: rgb(245, 245, 245);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    text-align: left;
+    padding-top: 7px;
+}
+
+.uvContainer {
+    /* background-color: blue; */
+    width: 70px;
+    border-radius: 4px;
+    padding-top: 13px;
+    
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+footer {
+    font-family: 'Days One';
+    font-size: small;
+    text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5);
+
+}
+
+
+@media (min-width: 992px){
+    #currentWeather {
+        width: 560px;
+    }
 }
