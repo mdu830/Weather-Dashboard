@@ -128,7 +128,7 @@ $(document).ready(function(){
 
             //icons//
             var iconCode = dayResponse.weather[0].icon;
-            var iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+            var iconURL = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
             
 
             //create container with current day forcast info
@@ -243,7 +243,7 @@ $(document).ready(function(){
 
               //append icons
               var iconCode = response.list[i].weather[0].icon;
-              var iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+              var iconURL = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
               
               iconCol =$("<div>");
               iconCol.attr("class", "col");
