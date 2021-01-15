@@ -21,8 +21,6 @@ $(document).ready(function(){
 
         queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIkey;
 
-        
-
     }
 
     //build 5 day weather info
@@ -39,22 +37,28 @@ $(document).ready(function(){
         UVqueryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
     }
 
-
+    ////This is what i need help with/////////////////////////////////////////
     function saveCitySearch() {
 
-      var citySaved = JSON.parse(localStorage.getItem(cityName));
-      if(citySaved === null){
+      var storedCities = JSON.parse(localStorage.getItem("storedCitySearch" , "#cityNameInput"));
+      
+      cityArr = [storedCities];
+      
+      if(storedCities === null) {
 
+        cityArr = cityName;
+        
 
+      } else if (storedCities.indexOf(storedCities.length) === -1) {
 
-      } else if (cityName.indexOf(citySaved) === -1) {
+      
+        cityArr.push(cityName);
 
-        citySaved = [cityName];
-        cityName.push(citySaved);
-
-      } localStorage.setItem(cityName, JSON.stringify(citySaved));
+      } localStorage.setItem("storedCitySearch", JSON.stringify(cityArr));
+    
     }
-
+    ///////////////////////////////////////////////////////////////////////////
+    
 
 
     $('#search').on("click", function(event) {
@@ -109,7 +113,7 @@ $(document).ready(function(){
             month = (date.getMonth() < 9 ? '0' : '') + (date.getMonth() + 1);
             year = date.getFullYear();
 
-            var finalDate = "(" + month + '/' + day + '/' + year + ")";
+            var finalDate = month + '/' + day + '/' + year;
 
             //Weather info//
             //temperature
@@ -227,7 +231,7 @@ $(document).ready(function(){
 
               //append dates
               card = $("<div>");
-              card.attr("class", "card m-4 mt-n1 mr-n1 text-center p-4 fiveDayForecast");
+              card.attr("class", "card m-4 mt-n1 mr-n1 mb-5 text-center p-4 fiveDayForecast");
               row.append(card);
 
               var unixTS = response.list[i].dt;
