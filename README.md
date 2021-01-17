@@ -11,7 +11,7 @@
 ## Future updates:
 
 <ul>
-  fix and finish responsive layout for mobile devices.
+  Fix and finish responsive layout for mobile devices.
 </ul>
 <ul>
   Nest UV index ajax in current day weather ajax for quicker uv index loading time.
