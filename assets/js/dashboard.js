@@ -59,7 +59,7 @@ $(document).ready(function(){
         cityStore = [];
       } else if (!cityInput.value){
         return;
-      } else if(cityStore.includes(cityInput)){ //<-- this isn't removing duplicate lines 
+      } else if(cityStore.includes(cityInput.value)){ //<-- this isn't removing duplicate lines 
         console.log(cityInput);
         return; 
       }
