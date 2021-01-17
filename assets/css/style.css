@@ -38,6 +38,14 @@ nav {
     20px 40px 40px rgba(0,0,0,.5); 
 }
 
+#clear {
+    color:rgb(68, 68, 255);
+}
+
+#clear:hover {
+    color: blue;
+}
+
 .colColor2 {
     background-color: rgba(20, 18, 18, 0.534);
 }

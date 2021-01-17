@@ -8,7 +8,7 @@ $(document).ready(function(){
     //get stored city searched from local storage JSON(parse)
 
     //add starting message
-    var startP = $("<p>").text("Search the name of your city, to get the latest weather information in your area");
+    var startP = $("<p>").text("Search the name of your city, to get the latest weather information in your area!");
     startP.attr("id", "startMessage");
     startP.attr("class", "mt-3");
     $("#displayInfo").append(startP);
@@ -47,7 +47,6 @@ $(document).ready(function(){
     renderCityButtons()
 
 
-    ////still need to remove duplicate cities
     //save current searched city
     function saveCitySearch() {
 
@@ -59,7 +58,7 @@ $(document).ready(function(){
         cityStore = [];
       } else if (!cityInput.value){
         return;
-      } else if(cityStore.includes(cityInput.value)){ //<-- this isn't removing duplicate lines 
+      } else if(cityStore.includes(cityInput.value)) {  
         console.log(cityInput);
         return; 
       }
@@ -352,5 +351,11 @@ $(document).ready(function(){
       var cityName = $(this).val()
       getDashboarResults(cityName);
       console.log(cityName)
+    });
+
+    $("#clear").on("click", function() {
+      localStorage.clear("#savedCitySearches");
+      $("#cityHistory").empty();
+
     });
 });
