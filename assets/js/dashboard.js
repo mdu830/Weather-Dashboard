@@ -59,7 +59,7 @@ $(document).ready(function(){
         cityStore = [];
       } else if (!cityInput.value){
         return;
-      } else if(cityStore.includes(cityInput)){
+      } else if(cityStore.includes(cityInput)){ //<-- this isn't removing duplicate lines 
         console.log(cityInput);
         return; 
       }
@@ -340,8 +340,6 @@ $(document).ready(function(){
       });
     }
 
-
-
     $('#search').on("click", function(event) {
         event.preventDefault();
         var cityName = $("#cityNameInput").val().trim();
@@ -355,8 +353,4 @@ $(document).ready(function(){
       getDashboarResults(cityName);
       console.log(cityName)
     });
-
-
-      
-
 });
