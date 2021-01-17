@@ -19,23 +19,27 @@ $(document).ready(function(){
     function renderCityButtons() {
       
       var cityStore = JSON.parse(localStorage.getItem("#savedCitySearches"));
-      console.log(cityStore)
+      // console.log(cityStore)
       if(cityStore === null){
         cityStore = [];
         
       } else {
 
+        $("#cityHistory").empty()
+
         for(var i = 0; i < cityStore.length; i++) {
         
+          cityRow = $("<div>");
+          cityRow.attr("class", "row ml-3");
           cityButton = $("<button>");
           cityButton.text(cityStore[i]);
-          cityButton.attr("id", cityStore[i]);
-          cityButton.attr("class", "btn btn-outline-success mt-sm-2 my-2 my-sm-0 cityClick");
+          cityButton.attr("class", "btn btn-outline-success w-75 m-1 mb-2");
           cityButton.attr("value", cityStore[i]);
-          $("#cityHistory").prepend(cityButton);
+          cityRow.append(cityButton);
+          $("#cityHistory").prepend(cityRow);
         
         }
-      }
+      } 
         
     }
     
@@ -43,7 +47,7 @@ $(document).ready(function(){
     renderCityButtons()
 
 
-
+    ////still need to remove duplicate cities
     //save current searched city
     function saveCitySearch() {
 
@@ -53,14 +57,19 @@ $(document).ready(function(){
 
       if(cityStore === null){
         cityStore = [];
-      } else if (this.error){
-        cityStore = [];
+      } else if (!cityInput.value){
+        return;
+      } else if(cityStore.includes(cityInput)){
+        console.log(cityInput);
+        return; 
       }
-      cityStore.push(cityInput.value);
-      localStorage.setItem("#savedCitySearches", JSON.stringify(cityStore));
-      cityInput.value = [""]; 
-    
+        cityStore.push(cityInput.value);
+        localStorage.setItem("#savedCitySearches", JSON.stringify(cityStore));
+        cityInput.value = [""]; 
+        console.log(cityStore.includes(cityInput))
+        console.log(cityStore)
     }
+    
 
     function getDashboarResults(cityName) {
 
@@ -221,7 +230,7 @@ $(document).ready(function(){
         }).then(function(response) {
 
 
-
+        renderCityButtons()
 
         //5-day forecast title row
         row = $("<div>");
@@ -340,7 +349,7 @@ $(document).ready(function(){
         console.log(cityName)
       });
 
-    $(".cityClick").click(function(event) {
+    $("#cityHistory").on("click", "button", function(event) {
       event.preventDefault();
       var cityName = $(this).val()
       getDashboarResults(cityName);
