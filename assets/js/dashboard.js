@@ -3,8 +3,6 @@ $(document).ready(function(){
 
     var APIkey = "2b7b2e286449b71196ecbc04235f228d";
 
-    console.log("yo yo");
-
     //get stored city searched from local storage JSON(parse)
 
     //add starting message
@@ -12,8 +10,6 @@ $(document).ready(function(){
     startP.attr("id", "startMessage");
     startP.attr("class", "mt-3");
     $("#displayInfo").append(startP);
-
-    //build current day weather info
 
 
     function renderCityButtons() {
@@ -42,10 +38,7 @@ $(document).ready(function(){
       } 
         
     }
-    
-
     renderCityButtons()
-
 
     //save current searched city
     function saveCitySearch() {
@@ -59,14 +52,11 @@ $(document).ready(function(){
       } else if (!cityInput.value){
         return;
       } else if(cityStore.includes(cityInput.value)) {  
-        console.log(cityInput);
         return; 
       }
         cityStore.push(cityInput.value);
         localStorage.setItem("#savedCitySearches", JSON.stringify(cityStore));
         cityInput.value = [""]; 
-        console.log(cityStore.includes(cityInput))
-        console.log(cityStore)
     }
     
 
@@ -307,7 +297,6 @@ $(document).ready(function(){
 
             
             var uvIndex = uvResponse.value;
-          //   var uvIndex = 12;
             displayUvIndex = "UV index: ";
 
             var uvRow = $("<div>");
@@ -323,7 +312,7 @@ $(document).ready(function(){
             uvIndexContainer.attr("class", "container mt-1 ml-n2 uvContainer");
             uvIndexContainer.append(uvIndex);
             uvRow.append(uvIndexContainer);
-
+            //uv index change container color
             if ( uvIndex <= 3.5) {
               $(".uvContainer").css("background-color","darkgreen");
             } else if (uvIndex <= 6.5) {
@@ -338,24 +327,23 @@ $(document).ready(function(){
           
       });
     }
-
+    //Search city 
     $('#search').on("click", function(event) {
         event.preventDefault();
         var cityName = $("#cityNameInput").val().trim();
         getDashboarResults(cityName)
         console.log(cityName)
       });
-
+    //city button click
     $("#cityHistory").on("click", "button", function(event) {
       event.preventDefault();
       var cityName = $(this).val()
       getDashboarResults(cityName);
       console.log(cityName)
     });
-
+    //Clear City Search History 
     $("#clear").on("click", function() {
       localStorage.clear("#savedCitySearches");
       $("#cityHistory").empty();
-
     });
 });
