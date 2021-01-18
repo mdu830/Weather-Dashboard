@@ -84,7 +84,7 @@ $(document).ready(function(){
           method: "GET",
           statusCode: {
               //if 404 ERROR display error message
-              404: function(error) {
+              404: function() {
                       var errorP = $("<p>").text("There was an error while retreiving your city, please check your spelling and try again");
                       errorP.attr("id", "errorMessage");
                       errorP.attr("class", "mt-3");
@@ -92,7 +92,7 @@ $(document).ready(function(){
 
               },
               //if 400 ERROR display nothing entered message
-              400: function(error) {
+              400: function() {
                   var nothingP = $("<p>").text("Nothing was entered, please try again");
                   nothingP.attr("id", "nothingMessage");
                   nothingP.attr("class", "mt-3");
